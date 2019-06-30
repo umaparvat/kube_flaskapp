@@ -1,5 +1,5 @@
 flask-sqlalchemy==2.2
-flask==0.12.2
+flask==0.12.3
 dependency-injector
 flask-restplus==0.10.1
 flask_caching
