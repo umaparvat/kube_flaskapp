@@ -1,0 +1,15 @@
+flask-sqlalchemy==2.2
+flask==0.12.2
+dependency-injector
+flask-restplus==0.10.1
+flask_caching
+flask-migrate==2.1
+flake8
+contextlib2
+gunicorn
+faker
+pytest-mock
+pytest-env
+pytest
+bandit
+pysqlite3
