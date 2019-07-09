@@ -1,4 +1,4 @@
-from flask_restplus import Namespace, Resource
+from flask_restplus import Namespace, Resource, reqparse
 from movies.resources.containers import DbMoviesModule, MyMoviesModule
 import settings
 
@@ -8,6 +8,38 @@ import settings
 namespace = Namespace(name="movies", description='The details of the movie')
 namespace_db = Namespace(name="movies from db", description='The details of the movie')
 
+
+parser = reqparse.RequestParser()
+parser.add_argument("director", type=str, help="specify the director name")
+parser.add_argument("year", type=int, help="the year the movie was released")
+
+@namespace.route('/full')
+@namespace.response(200, 'success')
+@namespace.response(401, 'unauthorized')
+@namespace.response(500, 'internal server error')
+class MoviesGetter(Resource):
+
+    @namespace.doc('movies', description='To get the movies list by director')
+    @namespace.doc(parser=parser)
+    def get(self):
+        try:
+            args = parser.parse_args()
+            if not args:
+                return {'error': 'Invalid argument'}, 400
+            
+            director = args.get('director')
+            year = args.get('year')
+            if not year:
+                return {'error': 'empty input'}, 400
+            lister = MyMoviesModule.lister()
+            result = lister.get_movies_by_year_director(year, director)
+            print(result)
+            if result:
+                return {'movies': result}, 200
+            else:
+                return {'error': 'No movies released in the given year'}, 408
+        except Exception as err:
+                return {'error': str(err)}, 500
 
 @namespace.route("/")
 @namespace.response(200, 'success')
