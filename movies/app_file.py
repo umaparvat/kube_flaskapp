@@ -1,7 +1,6 @@
 """Initialize flask"""
 import os
 import sys
-sys.path.append("C:\\Users\\kauma\\Documents\\Learning\\movies")
 from flask import Flask, jsonify
 from flask_migrate import Migrate
 from movies.models.db import database
