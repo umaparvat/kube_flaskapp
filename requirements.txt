@@ -4,6 +4,7 @@ dependency-injector
 flask-restplus==0.10.1
 flask_caching
 flask-migrate==2.1
+flask_script
 flake8
 contextlib2
 gunicorn

@@ -1,4 +1,6 @@
 import os
+import sys
+sys.path.append("/app")
 from flask_script import Manager
 from movies.app_file import app
 from flask_migrate import MigrateCommand
@@ -18,7 +20,7 @@ def routes():
 def run():
     """Run app"""
     routes()
-    app.run(host='127.0.0.1', port=5000, threaded=True, debug=True)
+    app.run(host='0.0.0.0', port=5000, threaded=True, debug=True)
 
 
 @manager.command
