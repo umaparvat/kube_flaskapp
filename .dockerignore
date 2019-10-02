@@ -5,3 +5,5 @@
 README-secret.md
 __pycache__/*
 __pycache__
+kube/*
+kube
