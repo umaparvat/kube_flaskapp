@@ -1,7 +1,6 @@
 """Initialize flask"""
 import os
 import sys
-sys.path.append("/app")
 from flask import Flask, jsonify
 from flask_migrate import Migrate
 from movies.models.db import database
@@ -23,7 +22,9 @@ def load_config(app):
 
 def database_init(app):
     database.init_app(app)
-    Migrate(app, database)
+    with app.app_context():
+        database.create_all()
+    #Migrate(app, database, directory="/app/migrations")
 
 
 def create_app():

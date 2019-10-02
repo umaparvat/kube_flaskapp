@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+ name: myflaskapp-config
+ namespace: default
+data:
+ SQLDATABASE_URI: sqlite:////app/db/movies.db

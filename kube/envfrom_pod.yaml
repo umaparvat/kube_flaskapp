@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-from-env
+spec:
+  containers:
+    - name: envfromtest
+      image: alpine:latest
+      command: ["sleep", "9999"]
+      envFrom:
+      - configMapRef:
+          name: ui-config

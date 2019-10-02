@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myflaskapp-from-env
+spec:
+  containers:
+    - name: myflaskappenv
+      image: umak/myflaskapp:latest
+      ports:
+      - containerPort: 8443
+      envFrom:
+      - configMapRef:
+          name: myflaskapp-config
+  imagePullSecrets:
+    - name: registry-secret          

@@ -1,7 +1,7 @@
 import multiprocessing
 import getpass
 
-base_dir = f"/home/{getpass.getuser()}"
+base_dir = f"/app"
 gunicorn_dir = base_dir + 'gunicorn/'
 # secrets_dir = base_dir + 'secrets/'
 # server

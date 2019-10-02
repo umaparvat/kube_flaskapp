@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: configmap-pod
+  namespace: default
+spec:
+  containers:
+  - name: envtest
+    image: alpine:latest
+    command: ["sleep", "9999"]
+    env:
+    - name: STRATEGY_RISK
+      valueFrom:
+        configMapKeyRef:
+          name: trading-strategy
+          key: strategy.risk
+    - name: STRATEGY_TYPE
+      valueFrom:
+        configMapKeyRef:
+          name: trading-strategy
+          key: strategy.type
+          
+
